@@ -92,6 +92,11 @@
     		<value>/tmp/logs</value>
     		<description>directory on hdfs where the application logs are moved to </description>
   	</property>
+  	<property>
+    		<name>yarn.log-aggregation.retain-seconds</name>
+    		<value>2592000</value>
+    		<description>How long to keep aggregation logs before deleting them. -1 disables.</description>
+  	</property>
         <!--
    	<property>
     		<name>yarn.nodemanager.log-dirs</name>
