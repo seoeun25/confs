@@ -30,7 +30,7 @@ cluster.name: az-es
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-#path.data: /path/to/data
+path.data: /es-data
 #
 # Path to log files:
 #
