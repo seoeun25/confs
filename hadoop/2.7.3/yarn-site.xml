@@ -122,7 +122,7 @@
   	</property>
 	<property>
     		<name>yarn.application.classpath</name>
-    		<value>/usr/lib/hadoop/conf, /usr/lib/hadoop/share/hadoop/common/*, /usr/lib/hadoop/share/hadoop/common/lib/*, /usr/lib/hadoop/share/hadoop/hdfs/*, /usr/lib/hadoop/share/hadoop/hdfs/lib/*, /usr/lib/hadoop/share/hadoop/yarn/*, /usr/lib/hadoop/share/hadoop/yarn/lib/*
+    		<value>/usr/local/hadoop/conf, /usr/local/hadoop/share/hadoop/common/*, /usr/local/hadoop/share/hadoop/common/lib/*, /usr/local/hadoop/share/hadoop/hdfs/*, /usr/local/hadoop/share/hadoop/hdfs/lib/*, /usr/local/hadoop/share/hadoop/yarn/*, /usr/local/hadoop/share/hadoop/yarn/lib/*
 		</value>
   	</property>
 </configuration>
