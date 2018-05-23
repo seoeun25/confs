@@ -11,7 +11,7 @@
         </property>
 	<property>
                 <name>mapred.job.tracker</name>
-	        <value>sembp:8021</value>
+	        <value>azra:8021</value>
         </property>
         <property>
   		<name>mapred.child.java.opts</name>
@@ -53,14 +53,14 @@
 
 	<property>
                 <name>mapreduce.jobhistory.address</name>
-                <value>sembp:10020</value>
+                <value>azra:10020</value>
                 <!--<value>192.168.31.244:10020</value>-->
                 <description>The address of the JobHistory Server.</description>
         </property>
 
 	<property>
                 <name>mapreduce.jobhistory.webapp.address</name>
-                <value>sembp:19888</value>
+                <value>azra:19888</value>
                 <description>The address of the JobHistory Server web.</description>
         </property>
 
