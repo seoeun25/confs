@@ -66,10 +66,10 @@
 # - SPARK_NO_DAEMONIZE  Run the proposed command in the foreground. It will not output a PID file.
 
 # HADOOP
-export HADOOP_HOME="/usr/lib/hadoop"
+export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 
 # pyspark
-export PYSPARK_PYTHON="/usr/local/Cellar/python3/3.4.3/Frameworks/Python.framework/Versions/3.4/bin/python3"
+export PYSPARK_PYTHON="/usr/local/Cellar/python3/3.6.0_1/Frameworks/Python.framework/Versions/3.6/bin/python3"
 export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
 
