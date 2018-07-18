@@ -8,24 +8,24 @@
 	        <name>yarn.app.mapreduce.am.staging-dir</name>
                 <value>/tmp/hadoop-yarn/staging</value>
                 <description>shuffle service that needs to be set for Map Reduce to run </description>
-        </property>
+	</property>
 	<property>
-                <name>mapred.job.tracker</name>
+            <name>mapreduce.job.tracker</name>
 	        <value>azra:8021</value>
-        </property>
+	</property>
         <property>
-  		<name>mapred.child.java.opts</name>
+  		<name>mapreduce.child.java.opts</name>
   		<value>-Xmx512m</value>
 	</property>
 	<property>
-		<name>mapred.tasktracker.map.tasks.maximum</name>
+		<name>mapreduce.tasktracker.map.tasks.maximum</name>
 		<value>2</value>
 		<description>The maximum number of map tasks that will be run
 		simultaneously by a task tracker.
 		</description>
 	</property>
 	<property>
-		<name>mapred.tasktracker.reduce.tasks.maximum</name>
+		<name>mapreduce.tasktracker.reduce.tasks.maximum</name>
 		<value>2</value>
 		<description>The maximum number of reduce tasks that will be run
 		simultaneously by a task tracker.
