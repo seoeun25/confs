@@ -66,7 +66,7 @@
 # - SPARK_NO_DAEMONIZE  Run the proposed command in the foreground. It will not output a PID file.
 
 # HADOOP
-export HADOOP_HOME="/usr/lib/hadoop"
+export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 
 # pyspark
