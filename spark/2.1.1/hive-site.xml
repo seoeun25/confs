@@ -9,7 +9,7 @@
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <!--Leave as localhost, since MySQL and Metastore are both on the master.-->
-    <value>jdbc:mysql://sembp/hive_21</value>
+    <value>jdbc:mysql://azra/hive_21</value>
     <description>the URL of the MySQL database</description>
   </property>
   <property>
@@ -58,7 +58,7 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://sembp:9083</value>
+    <value>thrift://azra:9083</value>
   </property>
   <!-- seoeun -->
   <property>
