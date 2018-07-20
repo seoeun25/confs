@@ -70,6 +70,6 @@ export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 
 # pyspark
-export PYSPARK_PYTHON="/usr/local/Cellar/python3/3.4.3/Frameworks/Python.framework/Versions/3.4/bin/python3"
+export PYSPARK_PYTHON=python3
 export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
 
