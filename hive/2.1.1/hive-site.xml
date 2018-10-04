@@ -80,4 +80,31 @@
     <name>hive.server2.tez.initialize.default.sessions</name>
     <value>true</value>
   </property>
+  <!-- merge small files -->
+  <property>
+    <name>hive.merge.mapfiles</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.merge.mapredfiles</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.merge.tezfiles</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.merge.sparkfiles</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.merge.size.per.task</name>
+    <value>128000000</value>
+    <description>256M. default.</description>
+  </property>
+  <property>
+    <name>hive.merge.smallfiles.avgsize</name>
+    <value>128000000</value>
+    <description>128M. default=16M</description>
+  </property>
 </configuration>
