@@ -107,4 +107,9 @@
     <value>128000000</value>
     <description>128M. default=16M</description>
   </property>
+  <!-- share lib. add jar. copy here jason-serde(hive-hcatalog*.jar)-->
+  <property>
+    <name>hive.aux.jars.path</name>
+    <value>/usr/local/share/hive</value>
+  </property>
 </configuration>
