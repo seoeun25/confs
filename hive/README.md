@@ -5,6 +5,8 @@ mysql의 사용자 만들기
 ```
 mysql> CREATE USER 'hive'@'%' IDENTIFIED BY 'hive';
 mysql> grant all privileges on *.* to 'hive'@'%';
+mysql> CREATE USER 'hive'@'localhost' IDENTIFIED BY 'hive';
+mysql> grant all privileges on *.* to 'hive'@'localhost';
 mysql> FLUSH PRIVILEGES;
 
 ```
