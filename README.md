@@ -9,11 +9,8 @@ hadoop, spark 등의 opensource component의 configuration 저장
 /etc/oozie/conf
 /etc/hive/conf
 
-## master branch
-sembp 노트북 기준
-
-## azra branch
-se 노트북 기준
+## hostname
+azra
 
 # Install hadoop
 Hadoop Home 을 /usr/local 로 한다면,
