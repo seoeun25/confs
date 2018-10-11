@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+KAFKA_HOME=/Users/seoeun/libs/kafka
+BIN=$KAFKA_HOME/bin
+
+module="kafka"
+log=/tmp/${module}.out
+pid_dir="/var/run/seoeun"
+if [ ! -d $pid_dir ]; then
+  echo "$pid_dir does not exists"	
+  mkdir $pid_dir
+fi
+
+pid="$pid_dir/${module}.pid"
+STOP_TIMEOUT=2
+case "$1" in
+  start)
+        if [ -f $pid ]; then
+          if kill -0 `cat $pid` > /dev/null 2>&1; then
+            echo $module running as process `cat $pid`.  Stop it first.
+            exit 1
+          fi
+        fi
+
+        echo starting $module logging to $log
+        nohup nice $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties > "$log" 2>$1 < /dev/null &
+        #nohup nice $BIN/dip.sh start > "$log" 2>&1 < /dev/null & 
+        
+        sleep 1
+        echo $! > $pid
+        TARGET_PID=`cat $pid`
+        echo starting as process $TARGET_PID
+        echo ""
+
+        ;;
+  stop)
+        echo $pid
+        if [ -f $pid ]; then
+        TARGET_PID=`cat $pid`
+        echo TARGET_PID : $TARGET_PID
+          if kill -0 $TARGET_PID > /dev/null 2>&1; then
+            echo stopping $module
+            kill $TARGET_PID
+            sleep $STOP_TIMEOUT
+            if kill -0 $TARGET_PID > /dev/null 2>&1; then
+              echo "$module did not stop gracefully after $STOP_TIMEOUT seconds: killing with kill -9"
+              kill -9 $TARGET_PID
+            fi
+          else
+            echo no $module to stop
+          fi
+          rm -f $pid
+        else
+          echo no pid $module to stop
+        fi
+        echo ""
+        ;;
+  *)
+        echo "Usage: $0 start|stop|" >&2
+        exit 3
+        ;;
+esac

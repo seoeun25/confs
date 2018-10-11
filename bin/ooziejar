@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+echo Building.. oozie-core
+
+cd core
+
+mvn -Dtest=skip clean package -Pmr1
+
+echo build core succeed
+
+cd ..
+
+echo Building.. oozie-client
+
+cd client
+
+mvn -Dtest=skip clean package
+
+cd ..
+
+cp core/target/oozie-core-*.jar distro/target/oozie-*-distro/oozie-*/oozie-core/
+cp client/target/oozie-client-*.jar distro/target/oozie-*-distro/oozie-*/lib/
+
+cp core/target/oozie-core-*.jar distro/target/oozie-*-distro/oozie-*/oozie-server/webapps/oozie/WEB-INF/lib
+cp core/target/oozie-client-*.jar distro/target/oozie-*-distro/oozie-*/oozie-server/webapps/oozie/WEB-INF/lib
+
+echo oozie-core build done.
+
+echo "stop oozie-server >>>>"
+
+$OOZIE_HOME/bin/oozie-stop.sh
+
+echo "start oozie-server >>>"
+
+$OOZIE_HOME/bin/oozie-start.sh

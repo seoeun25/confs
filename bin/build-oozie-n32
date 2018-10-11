@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+echo "......Building.. oozie-core";
+echo ""
+
+cd core
+
+mvn -Dtest=skip clean install -Pmr1.2.1 -PincludeHadoopJars 
+
+echo build core succeed
+echo ""
+
+cd ..
+
+echo Building.. oozie-client
+echo ""
+
+cd client
+
+mvn -Dtest=skip clean package install -Pmr1.2.1 -PincludeHadoopJars
+
+echo oozie-client build done.
+
+cd ..
+
+cp core/target/oozie-core-*.jar distro/target/oozie-*-distro/oozie-*/oozie-core/
+cp client/target/oozie-client-*.jar distro/target/oozie-*-distro/oozie-*/lib/
+
+rm -rf $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib/oozie-core-*.jar
+rm -rf $OOZIE_HOME/libtools/oozie-core-*.jar
+rm -rf $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib/oozie-client-*.jar
+rm -rf $OOZIE_HOME/lib/oozie-client-*.jar
+
+cp core/target/oozie-core-*.jar $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib
+cp client/target/oozie-client-*.jar $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib
+cp client/target/oozie-client-*.jar $OOZIE_HOME/lib/
+
+echo ""
+
+sleep 2
+
+echo "start oozie-server >>>>>>"
+
+$OOZIE_HOME/bin/oozie-start.sh

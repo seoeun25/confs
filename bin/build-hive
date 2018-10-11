@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+dir=$(pwd)
+module=$1
+
+echo $dir
+
+#default value
+if [ "$module" = "" ]; then
+  module=all
+fi
+
+echo "Building hive module [ $module ]"
+
+JAR_DIR=""
+HIVE_LIB_DIR="/Users/seoeun/libs/hive/lib"
+case $module in
+
+  (all)
+  mvn clean install -DskipTests -Phadoop-2,dist
+  
+  echo "---- Finish packaging ----"
+  lib_dir=""
+  for f in $dir/packaging/target/*-bin/*-bin/lib
+  do
+    echo "process :: file - $f"
+    lib_dir=$f
+  done
+
+  echo "lib_dir :: $lib_dir"
+  echo "Remove old modules ......"
+  rm -rf $HIVE_LIB_DIR/hive-*.jar
+  echo "Copy new modules ......"
+  cp $lib_dir/hive-*.jar $HIVE_LIB_DIR/
+  
+  ;;
+
+  (ql)
+  mvn -f $dir/ql/pom.xml clean install -DskipTests -Phadoop-2
+  echo "---- Finish packaging ----"
+  lib_dir="$dir/ql/target"
+
+  echo "lib_dir :: $lib_dir"
+  echo "Remove old modules ......"
+  rm -rf $HIVE_LIB_DIR/hive-exec-*.jar
+  echo "Copy new modules ......"
+  cp $lib_dir/hive-exec-*.jar $HIVE_LIB_DIR/
+
+  ;;
+  
+  (jdbc)
+  mvn -f $dir/jdbc/pom.xml clean install -DskipTests -Phadoop-2
+  echo "---- Finish packaging ----"
+  lib_dir="$dir/jdbc/target"
+
+  echo "lib_dir :: $lib_dir"
+  echo "Remove old modules ......"
+  rm -rf $HIVE_LIB_DIR/hive-jdbc-*.jar
+  echo "Copy new modules ......"
+  cp $lib_dir/hive-jdbc-*.jar $HIVE_LIB_DIR/
+  ;;
+ 
+  (service)
+  mvn -f $dir/jdbc/pom.xml clean install -DskipTests -Phadoop-2
+  echo "---- Finish packaging ----"
+  lib_dir="$dir/service/target"
+
+  echo "lib_dir :: $lib_dir"
+  echo "Remove old modules ......"
+  rm -rf $HIVE_LIB_DIR/hive-service-*.jar
+  echo "Copy new modules ......"
+  cp $lib_dir/hive-service-*.jar $HIVE_LIB_DIR/
+  ;;
+  
+esac
+
+

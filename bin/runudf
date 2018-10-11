@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+HIVE_UDF_INIT_FILE="/Users/seoeun/libs/hive_conf/.hiverc.2.1"
+
+UDF_TEST_HOME=""
+if [[ -z $1 ]] ; then
+  UDF_TEST_HOME="/Users/seoeun/mywork/ws_udf/nexr-hive-udf/nexr-hive-udf-test"
+fi
+
+queries=${UDF_TEST_HOME}/src/test/resources/queries
+
+echo "Query DIR = $queries"
+
+if [ -d "${queries}" ]; then
+  if [ `ls ${queries} | grep \.q\$ | wc -c` != 0 ]; then
+    for i in "${queries}/"*.q; do
+      echo ""
+      echo ">>>>>  TEST :::: $i"
+      hive -i ${HIVE_UDF_INIT_FILE} -f $i -hiveconf hive.fetch.task.conversion=more      
+      echo ""
+      echo ""
+    done
+  fi
+fi
+
+
+echo "\\n >>>>>> DONE UDF TEST >>>>>"
