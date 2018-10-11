@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+
+a=10
+b=20
+CURL='/usr/bin/curl'
+
+for i in {1..10}
+do 
+    echo "request $i times"
+    echo "$CURL -X GET 'https://seoeun-dot-lezhincomix-beta.appspot.com/v2/az/log_extend_write_batch?extra=6000'"
+    $CURL -X GET 'https://seoeun-dot-lezhincomix-beta.appspot.com/v2/az/log_extend_write_batch?extra=6000'
+done
+echo ""
+
+

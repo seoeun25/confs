@@ -1,0 +1,15 @@
+objc[36866]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/bin/java and /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libinstrument.dylib. One of the two will be used. Which one is undefined.
+Jun 07, 2016 11:52:46 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  com.nexr.rest
+Jun 07, 2016 11:52:46 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class com.nexr.rest.RESTRepository
+Jun 07, 2016 11:52:46 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Jun 07, 2016 11:52:46 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Jun 07, 2016 11:52:47 PM com.sun.jersey.spi.inject.Errors processErrorMessages
+WARNING: The following warnings have been detected with resource and/or provider classes:
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response com.nexr.rest.RESTRepository.healthCheck(), with URI template, "/", is treated as a resource method
+/Users/seoeun/libs/schema-registry/bin/schemarepo.sh: line 40: 36866 Killed: 9               java ${JAVA_OPT} -cp ${CLASS_PATH} -Dlog.dir=${LOG_DIR} -Dlog.rootLogger=${LOG_ROOTLOGGER} com.nexr.server.DipSchemaRepoServer start

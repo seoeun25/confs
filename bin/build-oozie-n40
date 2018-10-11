@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+echo "---- Building oozie-core ----";
+echo ""
+
+mvn -f core/pom.xml -Dtest=skip clean install -Phadoop-2 
+
+echo build core succeed
+
+echo ""
+echo "---- Building oozie-client ----";
+echo ""
+
+mvn -f client/pom.xml -Dtest=skip clean install -Phadoop-2 
+
+echo oozie-client build done.
+
+
+cp core/target/oozie-core-*.jar distro/target/oozie-*-distro/oozie-*/oozie-core/
+cp client/target/oozie-client-*.jar distro/target/oozie-*-distro/oozie-*/lib/
+
+rm -rf $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib/oozie-core-*.jar
+rm -rf $OOZIE_HOME/libtools/oozie-core-*.jar
+rm -rf $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib/oozie-client-*.jar
+rm -rf $OOZIE_HOME/lib/oozie-client-*.jar
+
+echo "...... Copy oozie-core, oozie-client ......"
+cp core/target/oozie-core-*.jar $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib
+cp core/target/oozie-core-*.jar $OOZIE_HOME/libtools/
+cp client/target/oozie-client-*.jar $OOZIE_HOME/oozie-server/webapps/oozie/WEB-INF/lib
+cp client/target/oozie-client-*.jar $OOZIE_HOME/lib
+
+echo "\n stop oozie-server >>>>"
+
+$OOZIE_HOME/bin/oozie-stop.sh
+
+echo "\n start oozie-server >>>"
+
+$OOZIE_HOME/bin/oozie-start.sh

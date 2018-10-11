@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+help="build-lezhin-server <module> <version>"
+
+MODULE=$1
+VERSION=$2
+if [ "$MODULE" == "--help" ]
+then
+      echo "$help"
+      exit 0;
+fi
+
+echo "---- Building lezhin server ----";
+echo ""
+if [[ -z $MODULE ]]; then
+    MODULE="default"    
+fi  
+echo "MODULE : ${MODULE}"
+
+if [[ -z $VERSION ]]; then
+    VERSION="seoeun"    
+fi  
+echo "VERSION : ${VERSION}"
+
+LEZHIN_SERVER_HOME=${HOME}/mywork/ws_lezhin_server/server 
+echo "LEZHIN_SERVER_HOME : ${LEZHIN_SERVER_HOME}"
+
+command_build="gradle clean build -b ${LEZHIN_SERVER_HOME}/build.gradle -x test -Pu=${VERSION}"
+echo ${command_build}
+gradle build -b ${LEZHIN_SERVER_HOME}/build.gradle -x test -Pu=${VERSION}
+
+echo "---- Update the module on APPENGINE ${MODULE} ${VERSION} ----"
+echo ""
+APPENGINE_HOME="${HOME}/libs/appengine"
+
+command_update_appengine="${APPENGINE_HOME}/bin/appcfg.sh update ${LEZHIN_SERVER_HOME}/${MODULE}/build/exploded/"
+echo ${command_update_appengine}
+echo ""
+${APPENGINE_HOME}/bin/appcfg.sh update ${LEZHIN_SERVER_HOME}/${MODULE}/build/exploded/
+
+command_request="";
+if [ $MODULE == "cms" ]
+then
+    command_request_url="https://seoeun-dot-cms-dot-lezhincomix-beta.appspot.com/v2/comics/4521514711908352/episodes?limit=9999"
+    command_request_header="Authorization: Bearer 4fd4643b-46e0-45e6-a743-a744b2f0bb9f";
+elif [ $MODULE == "default" ]
+then
+    command_request_url="https://seoeun-dot-lezhincomix-beta.appspot.com/v2/users/5331586170224640/subscriptions"
+    command_request_header="Authorization: Bearer 463d235e-3c64-438b-8799-7dd7548c5bcc";
+else
+   echo "None of the condition met"
+fi
+
+ 
+CURL='/usr/bin/curl'
+echo "---- request :: $CURL -X GET ${command_request_url} -H '${command_request_header}'  ----"
+$CURL -X GET "${command_request_url}" -H "${command_request_header}"
+
+echo ""
+
