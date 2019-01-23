@@ -12,5 +12,9 @@
 	<Logger name="org.apache.druid.indexing.kafka" level="DEBUG" additivity="false">
             <Appender-ref ref="Console" level="DEBUG" />
         </Logger>
+        <Logger name="org.apache.druid.indexing" level="DEBUG" additivity="false">
+            <Appender-ref ref="Console" level="DEBUG" />
+        </Logger>
+
     </Loggers>
 </Configuration>
