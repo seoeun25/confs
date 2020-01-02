@@ -19,7 +19,7 @@
 <configuration>
 	<property>
   		<name>dfs.namenode.name.dir</name>
-  		<value>file:///hadoop-data/HDFS/dfs/name</value>
+  		<value>file:///private/HDFS/dfs/name</value>
   		<description>Determines where on the local filesystem the DFS name node
       		should store the name table(fsimage).  If this is a comma-delimited list
       		of directories then the name table is replicated in all of the
@@ -27,6 +27,6 @@
 	</property>
 	<property>
   		<name>dfs.datanode.data.dir</name>
-  		<value>file:///hadoop-data/HDFS/dfs/data</value>
+  		<value>file:///private/HDFS/dfs/data</value>
 	</property>
 </configuration>
