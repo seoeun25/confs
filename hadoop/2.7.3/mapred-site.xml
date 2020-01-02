@@ -39,7 +39,7 @@
 	
 	<property>
     		<name>mapreduce.cluster.temp.dir</name>
-    		<value>/hadoop-data/HDFS/mapred-temp</value>
+    		<value>/private/HDFS/mapred-temp</value>
     		<description>No description</description>
     		<final>true</final>
   	</property>
