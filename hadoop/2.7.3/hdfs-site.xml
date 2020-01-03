@@ -27,6 +27,6 @@
 	</property>
 	<property>
   		<name>dfs.datanode.data.dir</name>
-  		<value>file:///hadoop-data/HDFS/dfs/data</value>
+  		<value>file:///private/HDFS/dfs/data</value>
 	</property>
 </configuration>
