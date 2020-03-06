@@ -10,7 +10,7 @@ hadoop, spark 등의 opensource component의 configuration 저장
 /etc/hive/conf
 
 ## hostname
-azra
+sembp
 
 # Install hadoop
 Hadoop Home 을 /usr/local 로 한다면,

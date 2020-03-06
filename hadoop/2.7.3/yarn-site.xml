@@ -17,7 +17,7 @@
 <!-- Site specific YARN configuration properties -->
 	<property>
     		<name>yarn.resourcemanager.resource-tracker.address</name>
-    		<value>azra:8031</value>
+    		<value>sembp:8031</value>
     		<description>host is the hostname of the resource manager and 
     		port is the port on which the NodeManagers contact the Resource Manager.
     		</description>
@@ -25,14 +25,14 @@
 
 	<property>
     		<name>yarn.resourcemanager.address</name>
-    		<value>azra:8032</value>
+    		<value>sembp:8032</value>
     		<description>the host is the hostname of the ResourceManager and the port is the port on
     		which the clients can talk to the Resource Manager. </description>
   	</property>
         <!--
   	<property>
     		<name>yarn.resourcemanager.scheduler.address</name>
-		<value>azra:8030</value>
+		<value>sembp:8030</value>
     		<description>host is the hostname of the resourcemanager and port is the port
     		on which the Applications in the cluster talk to the Resource Manager.
     		</description>
@@ -40,12 +40,12 @@
         -->
 	<property>
     		<name>yarn.resourcemanager.admin.address</name>
-    		<value>azra:8033</value>
+    		<value>sembp:8033</value>
   	</property>
 
 	<property>
     		<name>yarn.resourcemanager.webapp.address</name>
-    		<value>azra:8088</value>
+    		<value>sembp:8088</value>
   	</property>
 
   	<property>
@@ -64,17 +64,17 @@
 
   	<property>
     		<name>yarn.nodemanager.address</name>
-    		<value>azra:0</value>
+    		<value>sembp:0</value>
     		<description>the nodemanagers bind to this port</description>
   	</property>  
   	<property>
     		<name>yarn.nodemanager.webapp.address</name>
-    		<value>azra:8042</value>
+    		<value>sembp:8042</value>
     		<description></description>
   	</property>  
   	<property>
     		<name>yarn.nodemanager.localizer.address</name>
-    		<value>azra:8040</value>
+    		<value>sembp:8040</value>
     		<description></description>
   	</property>  
   	<property>
@@ -106,7 +106,7 @@
         -->
 	<property> 
  		<name>yarn.log.server.url</name> 
- 		<value>http://azra:19888/jobhistory/logs/</value>
+ 		<value>http://sembp:19888/jobhistory/logs/</value>
  		<description>URL for job history server</description>
 	</property>
 

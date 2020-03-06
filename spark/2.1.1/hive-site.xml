@@ -58,7 +58,7 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://azra:9083</value>
+    <value>thrift://sembp:9083</value>
   </property>
   <!-- seoeun -->
   <property>
