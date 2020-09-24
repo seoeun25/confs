@@ -39,14 +39,14 @@
 	
 	<property>
     		<name>mapreduce.cluster.temp.dir</name>
-    		<value>/private/HDFS/mapred-temp</value>
+    		<value>/private/HDFS-3.1.4/mapred-temp</value>
     		<description>No description</description>
     		<final>true</final>
   	</property>
 
   	<property>
     		<name>mapreduce.cluster.local.dir</name>
-    		<value>/private/HDFS/mapred-local</value>
+    		<value>/private/HDFS-3.1.4/mapred-local</value>
     		<description>No description</description>
     		<final>true</final>
   	</property>
@@ -68,4 +68,17 @@
                 <name>yarn.nodemanager.aux-services</name>
                 <value>mapreduce_shuffle</value>
         </property>
+	<property>
+		<name>yarn.app.mapreduce.am.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+	<property>
+		<name>mapreduce.map.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+	<property>
+		<name>mapreduce.reduce.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+
 </configuration>

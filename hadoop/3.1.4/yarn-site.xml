@@ -58,7 +58,7 @@
   	<property>
     		<name>yarn.nodemanager.local-dirs</name>
     		<!--<value>/data/1/yarn/local,/data/2/yarn/local,/data/3/yarn/local</value>-->
-    		<value>/private/HDFS/yarn/nm-local-dir</value>
+    		<value>/private/HDFS-3.1.4/yarn/nm-local-dir</value>
     		<description>the local directories used by the nodemanager</description>
   	</property>
 

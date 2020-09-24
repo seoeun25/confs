@@ -23,7 +23,7 @@
         </property>
         <property>
                 <name>hadoop.tmp.dir</name>
-                <!--<value>/private/HDFS/hadoop-${user.name}</value>-->
+                <!--<value>/private/HDFS-3.1.4/hadoop-${user.name}</value>-->
                 <value>/tmp/hadoop-${user.name}</value>
         </property>
         
