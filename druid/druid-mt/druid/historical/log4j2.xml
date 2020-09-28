@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="LOG_DIR">/usr/local/druid-mt/log</Property>
+        <Property name="LOG_PATTERN">%d{ISO8601} %p [%t] %c - %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <RollingFile
+          name="rollingFile"
+          fileName="${LOG_DIR}/historical.log"
+          filePattern="${LOG_DIR}/historical.%d{yyyy-MM-dd}.log"
+          ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="rollingFile"/>
+        </Root>
+        <Logger name="io.druid.indexing" level="info" additivity="false">
+            <Appender-ref ref="rollingFile" />
+        </Logger>
+        <Logger name="org.apache.hadoop" level="info" additivity="false">
+            <Appender-ref ref="rollingFile" />
+        </Logger>
+    </Loggers>
+</Configuration>
