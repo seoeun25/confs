@@ -16,4 +16,12 @@ metastore는 derby
     * wikipedia-top-pages.json
 
 ## 0.12.3
+
+## single
+
+```
+$ bin/single.sh coordinator overlord historical middleManager broker router
+
+```
+
     
