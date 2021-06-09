@@ -24,4 +24,19 @@ $ bin/single.sh coordinator overlord historical middleManager broker router
 
 ```
 
+## Remote Agent 셋팅 (with IntelliJ)
+1. Druid Process를 실행할 때 다음과 같이 Option 을 추가하여 실행한다. 
+
+broker jvm.config
+```
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8882
+```
+
+2. IntelliJ 에서 Remote 실행 추가
+Run --> Configuration 추가 --> Command Line Option 에 다음과 같이 추가한 후 실행 
+
+```
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8882
+```
+
     
