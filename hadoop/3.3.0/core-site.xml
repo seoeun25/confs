@@ -17,4 +17,24 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://azra:8020</value>
+  </property>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <!--<value>/private/HDFS/hadoop-${user.name}</value>-->
+    <value>/tmp/hadoop-3.3-${user.name}</value>
+  </property>
+
+  <!-- for oozie -->
+  <property>
+    <name>hadoop.proxyuser.seoeun.hosts</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.seoeun.groups</name>
+    <value>*</value>
+  </property>
+
 </configuration>
