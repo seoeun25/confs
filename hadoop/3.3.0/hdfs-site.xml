@@ -29,4 +29,12 @@
     <name>dfs.datanode.data.dir</name>
     <value>file:///private/HDFS-3.3/dfs/data</value>
   </property>
+  <property>
+    <name>dfs.namenode.secondary.http-address</name>
+    <value>azra:50090</value>
+  </property>
+  <property>
+    <name>dfs.namenode.secondary.https-address</name>
+    <value>azra:50091</value>
+  </property>
 </configuration>
