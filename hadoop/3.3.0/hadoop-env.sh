@@ -51,7 +51,7 @@
 
 # The java implementation to use. By default, this environment
 # variable is REQUIRED on ALL platforms except OS X!
-# export JAVA_HOME=
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home"
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
@@ -65,7 +65,7 @@
 # /etc/profile.d or equivalent.  Some options (such as
 # --config) may react strangely otherwise.
 #
-# export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-"/etc/hadoop"}
 
 # The maximum amount of heap to use (Java -Xmx).  If no unit
 # is provided, it will be converted to MB.  Daemons will
@@ -100,7 +100,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
 # let users supply it on the command line.
-# export HADOOP_CLIENT_OPTS=""
+export HADOOP_CLIENT_OPTS="-Xmx1024m $HADOOP_CLIENT_OPTS"
 
 #
 # A note about classpaths.
@@ -124,6 +124,16 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # This variable should ideally only be used as a short-cut,
 # interactive way for temporary additions on the command line.
 # export HADOOP_CLASSPATH="/some/cool/path/on/your/machine"
+
+# Extra Java CLASSPATH elements.  Automatically insert capacity-scheduler.
+for f in $HADOOP_HOME/contrib/capacity-scheduler/*.jar; do
+  if [ "$HADOOP_CLASSPATH" ]; then
+    export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$f
+  else
+    export HADOOP_CLASSPATH=$f
+  fi
+done
+
 
 # Should HADOOP_CLASSPATH be first in the official CLASSPATH?
 # export HADOOP_USER_CLASSPATH_FIRST="yes"
