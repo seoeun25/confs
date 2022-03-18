@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DRUID_HOME=/usr/local/druid-mt
+DRUID_HOME=/usr/local/druid
 BIN=$DRUID_HOME/bin
 
 # export ZOO_LOG_DIR=$ZOOKEEPER_HOME/logs
