@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="log/defaults.xml"/>
+
+    <springProfile name="public">
+        <include resource="log/console.xml"/>
+        <root level="WARN">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="dev, demo, mkt, apollo, stg, local">
+        <include resource="log/file.xml"/>
+        <logger name="com.skt.audi.common.util.StatLogger" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="STAT"/>
+            <appender-ref ref="FILE_TIME"/>
+        </logger>
+
+        <root level="WARN">
+            <appender-ref ref="FILE_TIME"/>
+            <appender-ref ref="ERROR"/>
+        </root>
+    </springProfile>
+</configuration>

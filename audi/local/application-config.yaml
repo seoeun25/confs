@@ -1,0 +1,77 @@
+spring:
+  # If "AUDI_DB_TYPE" property in metatron-env file is "mysql"
+  application:
+    name: AUDI_LOCAL
+  datasource:
+    url: jdbc:mysql://was6:3306/audi?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: audi_user
+    password: audi_user_00
+  security:
+    oauth2:
+      client:
+        registration:
+          metatron:
+            client-id: audi
+            client-secret: audi-secret
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8192/login/oauth2/code/metatron
+            scope: [read, write]
+            client-name: metatron
+        provider:
+          metatron:
+            authorization-uri: http://metatron.bundang10f.io/oauth/authorize
+            token-uri: http://was1:8281/oauth/token
+            jwk-set-uri:
+            user-info-uri: http://was1:8281/api/oauth/user/info
+            user-info-authentication-method: header
+            user-name-attribute: username
+server:
+  port: 8192
+discovery:
+  hostUrl: http://metatron.bundang10f.io
+  internalUrl: http://was1:8281
+  swagger:
+    authorization-uri: http://metatron.bundang10f.io/oauth/authorize
+    token-uri: http://metatron.bundang10f.io/oauth/token
+    client-id: audi
+    client-secret: audi-secret
+druid:
+  hostname:
+    broker: http://druid-query.metatron.bundang10f.io
+  query:
+    loader:
+      remoteType: SSH
+      localBaseDir: ${AUDI_UPLOAD_DIR:${java.io.tmpdir}}
+      remoteDir: ${java.io.tmpdir:-/tmp}
+      hosts:
+        "[master3.metatron-dev]":
+          port: 22
+          username: metatron
+          password: pem:/home/metatron/.ssh/id_rsa
+meta:
+  database:
+    driver-class-name: org.apache.hive.jdbc.HiveDriver
+    url: jdbc:hive2://master2.metatron-dev:10000/cdis?hive.execution.engine=mr
+    username: hive
+    password: hive_user_00
+meta-apollo:
+  database:
+    driver-class-name: org.apache.hive.jdbc.HiveDriver
+    url: jdbc:hive2://master2.metatron-dev:10000/apollo?hive.execution.engine=mr
+    username: hive
+    password: hive_user_00
+  datasource:
+    apollo-customer-dashboard-wide: apollo_customer_dashboard_table_wide_v2_masking
+    apollo-customer-dashboard-long: apollo_customer_dashboard_table_long_v2_masking
+    apollo-personal-km-keyword: apollo_personal_km_keyword_v2_masking
+    apollo-customer-dashboard-movie: apollo_customer_dashboard_table_movie_masking
+    apollo-customer-dashboard-music: apollo_customer_dashboard_table_music_masking
+file:
+  maxTarget: 100000
+download:
+  maxTarget: 25000000
+authentication:
+  request: true
+logging:
+  config: classpath:logback-console.xml
